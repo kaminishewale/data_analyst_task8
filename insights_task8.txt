@@ -1,0 +1,12 @@
+===================================================================
+                       TASK 8: SQL INSIGHTS
+===================================================================
+
+[Insight 1: Ranking Function Comparisons]
+When evaluating regional customer performance, DENSE_RANK() proved to be the most reliable window function for business tracking. Unlike ROW_NUMBER(), which forces an arbitrary sequential order even when sales totals match perfectly, or RANK(), which leaves gaps in the scoring sequence after a tie, DENSE_RANK() handles tied sales volumes cleanly. It ensures that customers with identical financial contributions share the same ranking position without disrupting the subsequent placement order.
+
+[Insight 2: Chronological Trajectory via Running Totals]
+Utilizing a cumulative SUM() window function ordered chronologically allows the business to observe true revenue velocity over time. By calculating a running total that aggregates sales dynamically row by row, we can pinpoint exactly when cumulative revenue goals were reached. This eliminates the noise of isolated daily or weekly fluctuations, providing data analysts with a smooth trendline to evaluate baseline financial health across different quarters.
+
+[Insight 3: Period-over-Period Performance Analytics]
+The implementation of the LAG() analytical window function is incredibly valuable for detecting seasonal expansion and contraction periods. By pulling the previous month's total sales figures directly into the current month's record, we can compute Month-over-Month (MoM) growth percentages natively in the database. This approach removes the need for slow, resource-heavy self-joins on large datasets, allowing for fast, scalable historical variance reporting.
